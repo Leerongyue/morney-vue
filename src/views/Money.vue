@@ -1,9 +1,9 @@
 <template>
   <Layout classPrefix="xxx">
-    <Tags/>
-    <Notes/>
-    <Types/>
     <NumberPad/>
+    <Types/>
+    <Notes/>
+    <Tags/>
   </Layout>
 </template>
 
@@ -21,7 +21,7 @@
 <style lang="scss">
   .xxx-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 </style>
 <style lang="scss" scoped>
