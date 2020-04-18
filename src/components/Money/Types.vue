@@ -28,9 +28,6 @@
       }
       this.type = type;
     }
-    // created(){
-    //   console.log(this.xxx);
-    // }
   }
   // export default {
   //   name: 'Types',
