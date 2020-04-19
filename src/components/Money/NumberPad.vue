@@ -6,7 +6,7 @@
         <button @click="inputContent">1</button>
         <button @click="inputContent">2</button>
         <button @click="inputContent">3</button>
-        <button >+</button>
+        <button>+</button>
         <button @click="remove">删除</button>
         <button @click="inputContent">4</button>
         <button @click="inputContent">5</button>
@@ -20,7 +20,7 @@
         <button class="ok" @click="ok">ok</button>
         <button @click="inputContent">.</button>
         <button @click="inputContent">0</button>
-        <button >=</button>
+        <button>=</button>
         <button>÷</button>
 
       </div>
@@ -30,10 +30,11 @@
 
 <script lang="ts">
   import Vue from 'vue';
-  import {Component} from 'vue-property-decorator';
+  import {Component, Prop} from 'vue-property-decorator';
 
   @Component
   export default class NumberPad extends Vue {
+    @Prop() readonly numberPadData: string | undefined;
     output = '0';
     // temp = '';
     // state = 0;
@@ -70,7 +71,7 @@
       if (this.output.length === 1) {
         this.output = '0';
       } else {
-        this.output = this.output.slice(0, -1);
+        this.output = this.output!.slice(0, -1);
 
       }
     }
@@ -80,7 +81,9 @@
       this.output = '0';
     }
 
-    ok() {return;}
+    ok() {
+      this.$emit('update:numberPadData', this.output);
+    }
 
     // add() {
     //   this.state = 1;

@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{x}}
     <div class="notes">
       <span class="name">备注</span>
       <input type="text" placeholder="在这里输入备注" v-model="x">
@@ -10,10 +9,18 @@
 
 <script lang="ts">
   import Vue from 'vue';
-  import {Component} from 'vue-property-decorator';
-@Component
-  export default class Notes extends Vue{
-    x=''
+  import {Component, Prop, Watch} from 'vue-property-decorator';
+
+  @Component
+  export default class Notes extends Vue {
+    @Prop(String) notesData: string | undefined;
+    x = this.notesData;
+    @Watch('x')
+    onXChanged(x: string){
+      this.$emit('update:notesData',this.x)
+    }
+
+
   }
 </script>
 
