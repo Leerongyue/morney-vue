@@ -37,12 +37,19 @@
     output = '0';
     // temp = '';
     // state = 0;
+    // a = '';
+    // n = 0;
 
     inputContent(event: MouseEvent) {
 
       const button = (event.target as HTMLButtonElement);
       const input = button.textContent!;
-
+      // if (this.state !== 0) {
+      //   this.a += input;
+      //   this.output = this.a;
+      //   console.log(this.a);
+      //
+      // } else {
       if (this.output.length === 16) {return;}
       if (this.output.indexOf('.') >= 0 && input === '.') {return;}
       if (this.output === '0') {
@@ -53,13 +60,13 @@
         }
       } else {
         this.output += input;
+        // }
       }
 
 
     }
 
     remove() {
-
       if (this.output.length === 1) {
         this.output = '0';
       } else {
@@ -70,30 +77,32 @@
 
 
     clear() {
-
       this.output = '0';
     }
 
     ok() {return;}
 
     // add() {
-    //
-    //   this.temp = this.output;
-    //
-    //   return;
+    //   this.state = 1;
+    //   this.n += 1;
+    //   if (this.n === 1) {
+    //     this.temp = this.output;
+    //     return;
+    //   } else {
+    //     this.temp = this.output;
+    //     this.output = JSON.stringify(parseInt(this.output) + parseInt(this.temp));
+    //   }
     // }
 
+
     // equal() {
-    //   this.output = JSON.stringify(parseInt(this.output) + parseInt(this.temp));
     //
+    //   this.output = JSON.stringify(parseInt(this.output) + parseInt(this.temp));
+    //   this.state = 0;
+    //   this.a = '';
     // }
   }
-  //   if (this.output === '0') {
-  //
-  //   } else {
-  //
-  //   }
-  // }
+
 </script>
 
 <style lang="scss" scoped>
