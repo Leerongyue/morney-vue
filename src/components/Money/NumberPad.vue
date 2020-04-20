@@ -34,8 +34,8 @@
 
   @Component
   export default class NumberPad extends Vue {
-    @Prop() readonly numberPadData: string | undefined;
-    output = '0';
+    @Prop() readonly value!: number;
+    output = this.value.toString();
     // temp = '';
     // state = 0;
     // a = '';
@@ -82,7 +82,7 @@
     }
 
     ok() {
-      this.$emit('update:numberPadData', this.output);
+      this.$emit('update:value', this.output);
     }
 
     // add() {

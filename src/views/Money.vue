@@ -1,9 +1,9 @@
 <template>
   <Layout classPrefix="xxx">
-    <NumberPad :numberPad-data.sync="record.number"/>
-    <Types :types-data.sync="record.type"/>
-    <Notes :notes-data.sync="record.notes"/>
-    <Tags :tags-data.sync="record.tags"/>
+    <NumberPad :value.sync="record.amount"/>
+    <Types :value.sync="record.type"/>
+    <Notes :value.sync="record.notes"/>
+    <Tags :value.sync="record.tags"/>
     {{record}}
   </Layout>
 </template>
@@ -20,14 +20,13 @@
     tags: string[];
     notes: string;
     type: string;
-    number: string;// 数据类型 object | string
+    amount: number;// 数据类型 object | string
   }
   @Component({components: {NumberPad, Types, Notes, Tags}})
   export default class Money extends Vue {
     record: Record = {
-      tags: ['衣', '食', '住', '行', '大保健'], notes: '', type: '-', number: '0'
+      tags: ['衣', '食', '住', '行'], notes: '', type: '-', amount: 0
     };
-
   }
 </script>
 <style lang="scss">

@@ -7,7 +7,7 @@
         </button>
       </div>
       <ul class="current">
-        <li v-for="tag in tagsData" :key="tag" @click="toggle(tag)" :class="{selected:selectedTags.indexOf(tag)>=0}">
+        <li v-for="tag in value" :key="tag" @click="toggle(tag)" :class="{selected:selectedTags.indexOf(tag)>=0}">
           {{tag}}
         </li>
       </ul>
@@ -21,7 +21,7 @@
 
   @Component
   export default class Tags extends Vue {
-    @Prop() readonly tagsData: string[] | undefined;
+    @Prop() readonly value: string[] | undefined;
     selectedTags: string[] = [];
 
     toggle(tag: string) {
@@ -39,8 +39,8 @@
       if (name === '') {
         window.alert('标签名不能为空');
       } else if(name){
-        if (this.tagsData) {
-          this.$emit('update:tagsData', [...this.tagsData, name]);
+        if (this.value) {
+          this.$emit('update:value', [...this.value, name]);
         }
 
       }

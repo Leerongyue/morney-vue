@@ -19,14 +19,14 @@
 
   @Component
   export default class Types extends Vue {
-    @Prop(String) typesData: string | undefined;
-    type = this.typesData;
+    @Prop(String) value: string | undefined;
+    type = this.value;
     selectType(type: string) {
       if (type !== '+' && type !== '-') {
         throw new Error('type is unknown');
       }
       this.type = type;
-      this.$emit('update:typesData',type)
+      this.$emit('update:value',type)
     }
   }
   // export default {

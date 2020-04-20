@@ -13,11 +13,11 @@
 
   @Component
   export default class Notes extends Vue {
-    @Prop(String) notesData: string | undefined;
-    x = this.notesData;
+    @Prop(String) value: string | undefined;
+    x = this.value;
     @Watch('x')
     onXChanged(x: string){
-      this.$emit('update:notesData',this.x)
+      this.$emit('update:value',this.x)
     }
 
 
