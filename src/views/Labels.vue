@@ -1,11 +1,11 @@
 <template>
   <Layout>
-    <ul class="tags">
-      <li v-for="tag in tags" :key="tag.id">
+    <div class="tags">
+      <router-link class="tag" v-for="tag in tags" :key="tag.id" :to="`/labels/edit/${tag.id}`">
         <span>{{tag.name}}</span>
-        <Icon name="right"/>
-      </li>
-    </ul>
+        <Icon name="right" />
+      </router-link>
+    </div>
 
     <div class="newTag-wrapper">
       <button class="newTag" @click="createTag">
@@ -16,13 +16,15 @@
 </template>
 
 <script lang="ts">
-  import Icon from '@/components/Icon.vue';
   import Vue from 'vue';
   import {Component} from 'vue-property-decorator';
   import tagListModel from '@/tagListModel';
+  import Icon from '@/components/Icon.vue';
 
   tagListModel.fetch();
-  @Component
+  @Component({
+    components: {Icon}
+  })
   export default class Labels extends Vue {
     tags = tagListModel.data;
 
@@ -35,8 +37,8 @@
           const message = tagListModel.create(name);
           if (message === 'duplicated') {
             window.alert('标签名重复');
-          }else{
-            window.alert('添加成功')
+          } else {
+            window.alert('添加成功');
           }
 
         }
@@ -54,7 +56,8 @@
     background: white;
     padding: 0 16px;
 
-    li {
+    > .tag {
+      /*border:1px solid red;*/
       min-height: 44px;
       font-size: 16px;
       display: flex;
@@ -62,9 +65,10 @@
       border-bottom: 1px solid rgb(221, 221, 224);
       align-items: center;
 
-      svg {
+      > .icon {
         height: 18px;
         width: 18px;
+        color: #666;
         align-items: center;
       }
     }

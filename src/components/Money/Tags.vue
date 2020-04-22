@@ -7,8 +7,8 @@
         </button>
       </div>
       <ul class="current">
-        <li v-for="tag in value" :key="tag" @click="toggle(tag)" :class="{selected:selectedTags.indexOf(tag)>=0}">
-          {{tag}}
+        <li v-for="tag in value" :key="tag.id" @click="toggle(tag)" :class="{selected:selectedTags.indexOf(tag)>=0}">
+          {{tag.name}}
         </li>
       </ul>
     </div>
