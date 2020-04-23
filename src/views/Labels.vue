@@ -15,7 +15,7 @@
 <script lang="ts">
   import Vue from 'vue';
   import {Component} from 'vue-property-decorator';
-  import tagListModel from '@/tagListModel';
+  import tagListModel from '@/models/tagListModel';
   import Icon from '@/components/Icon.vue';
   import Button from '@/components/Button.vue';
 
@@ -37,7 +37,7 @@
           if (message === 'duplicated') {
             window.alert('标签名重复');
           } else {
-            window.alert('添加成功');
+            // window.alert('添加成功');
           }
 
         }

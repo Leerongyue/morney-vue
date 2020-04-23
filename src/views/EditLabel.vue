@@ -23,7 +23,7 @@
   import Icon from '@/components/Icon.vue';
   import FormItem from '@/components/Money/FormItem.vue';
   import Button from '@/components/Button.vue';
-  import tagListModel from '@/tagListModel';
+  import tagListModel from '@/models/tagListModel';
 
 
   @Component({
@@ -34,8 +34,7 @@
 
     created() {
       const id = this.$route.params.id;
-      tagListModel.fetch;
-      const tags = tagListModel.data;
+      const tags = window.tagList;
       const tag = tags.filter(t => t.id === id)[0];
       if (tag) {
         this.tag = tag;

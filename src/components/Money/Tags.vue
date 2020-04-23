@@ -17,7 +17,7 @@
 <script lang="ts">
   import Vue from 'vue';
   import {Component, Prop} from 'vue-property-decorator';
-  import tagListModel from '@/tagListModel';
+  import tagListModel from '@/models/tagListModel';
 
   @Component
   export default class Tags extends Vue {
