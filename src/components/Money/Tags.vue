@@ -1,18 +1,16 @@
 <template>
-  <div>
-    <div class="tags">
-      <div class="new" @click="create">
-        <button>
-          新增标签
-        </button>
-      </div>
-      <ul class="current">
-        <li v-for="tag in dataSource" :key="tag.id" @click="toggle(tag.name)"
-            :class="{selected:selectedTags.indexOf(tag.name)>=0}">
-          {{tag.name}}
-        </li>
-      </ul>
+  <div class="tags">
+    <div class="new" @click="create">
+      <button>
+        新增标签
+      </button>
     </div>
+    <ul class="current">
+      <li v-for="tag in dataSource" :key="tag.id" @click="toggle(tag.name)"
+          :class="{selected:selectedTags.indexOf(tag.name)>=0}">
+        {{tag.name}}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -52,6 +50,7 @@
 
 <style lang="scss" scoped>
   .tags {
+    background: white;
     /*border: 1px solid red;*/
     display: flex;
     flex-direction: column-reverse;
@@ -66,6 +65,7 @@
       align-items: center;
       flex-wrap: wrap;
       overflow-x: hidden;
+
 
       > li {
         $bg: #D9D9D9;
