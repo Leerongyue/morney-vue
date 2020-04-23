@@ -7,7 +7,8 @@
         </button>
       </div>
       <ul class="current">
-        <li v-for="tag in value" :key="tag.id" @click="toggle(tag)" :class="{selected:selectedTags.indexOf(tag)>=0}">
+        <li v-for="tag in dataSource" :key="tag.id" @click="toggle(tag.name)"
+            :class="{selected:selectedTags.indexOf(tag.name)>=0}">
           {{tag.name}}
         </li>
       </ul>
@@ -18,10 +19,11 @@
 <script lang="ts">
   import Vue from 'vue';
   import {Component, Prop} from 'vue-property-decorator';
+  import tagListModel from '@/tagListModel';
 
   @Component
   export default class Tags extends Vue {
-    @Prop() readonly value: string[] | undefined;
+    @Prop() readonly dataSource: string[] | undefined;
     selectedTags: string[] = [];
 
     toggle(tag: string) {
@@ -31,7 +33,7 @@
       } else {
         this.selectedTags.push(tag);
       }
-
+      this.$emit('update:value', this.selectedTags);
     }
 
     create() {
@@ -39,8 +41,8 @@
       if (name === '') {
         window.alert('标签名不能为空');
       } else if (name) {
-        if (this.value) {
-          this.$emit('update:value', [...this.value, name]);
+        if (this.dataSource) {
+          this.$emit('update:value', [...this.dataSource, name]);
         }
 
       }

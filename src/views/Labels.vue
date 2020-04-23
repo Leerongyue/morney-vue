@@ -3,10 +3,9 @@
     <div class="tags">
       <router-link class="tag" v-for="tag in tags" :key="tag.id" :to="`/labels/edit/${tag.id}`">
         <span>{{tag.name}}</span>
-        <Icon name="right" />
+        <Icon name="right"/>
       </router-link>
     </div>
-
     <div class="newTag-wrapper">
       <button class="newTag" @click="createTag">
         新建标签
@@ -20,6 +19,7 @@
   import {Component} from 'vue-property-decorator';
   import tagListModel from '@/tagListModel';
   import Icon from '@/components/Icon.vue';
+
 
   tagListModel.fetch();
   @Component({

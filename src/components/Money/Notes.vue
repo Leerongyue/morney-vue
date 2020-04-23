@@ -1,8 +1,11 @@
 <template>
   <div>
     <div class="notes">
-      <span class="name">备注</span>
-      <input type="text" placeholder="在这里输入备注" v-model="x">
+      <span class="name">{{fieldName}}</span>
+      <input type="text"
+             :placeholder="placeHolder"
+             v-model="value"
+      >
     </div>
   </div>
 </template>
@@ -13,11 +16,14 @@
 
   @Component
   export default class Notes extends Vue {
-    @Prop(String) value: string | undefined;
-    x = this.value;
-    @Watch('x')
-    onXChanged(x: string){
-      this.$emit('update:value',this.x)
+    value = '';
+    // @Prop({default: ''}) value: string | undefined;
+    @Prop({required: true}) fieldName!: string;
+    @Prop() placeHolder?: string;
+
+    @Watch('value')
+    onValueChanged(value: string) {
+      this.$emit('update:value', value);
     }
 
 
