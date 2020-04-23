@@ -4,7 +4,8 @@
       <span class="name">{{fieldName}}</span>
       <input type="text"
              :placeholder="placeHolder"
-             v-model="value"
+             :value="value"
+             @input="onValueChanged($event.target.value)"
       >
     </div>
   </div>
@@ -16,8 +17,7 @@
 
   @Component
   export default class FormItem extends Vue {
-    value = '';
-    // @Prop({default: ''}) value: string | undefined;
+    @Prop({default: ''}) readonly value: string | undefined;
     @Prop({required: true}) fieldName!: string;
     @Prop() placeHolder?: string;
 
