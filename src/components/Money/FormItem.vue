@@ -21,7 +21,7 @@
     @Prop({required: true}) fieldName!: string;
     @Prop() placeHolder?: string;
 
-    @Watch('value')
+    // @Watch('value')
     onValueChanged(value: string) {
       this.$emit('update:value', value);
     }
