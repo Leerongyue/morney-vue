@@ -3,9 +3,10 @@
     <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
     <Types :value.sync="record.type"/>
     <div class="notes">
-      <FormItem @update:value="onUpdateNotes" field-name="备注" place-holder="在这里输入备注"/>
+<!--      ///////////不同处(.sync)//////////////-->
+      <FormItem :value.sync="record.notes" field-name="备注" place-holder="在这里输入备注"/>
     </div>
-    <Tags :data-source.sync="tags"/>
+    <Tags/>
   </Layout>
 </template>
 
@@ -20,21 +21,15 @@
 
   @Component({components: {FormItem, NumberPad, Types, Tags}})
   export default class Money extends Vue {
-    tags = store.tagList;
     recordList = store.recordList;
     record: RecordItem = {
-      tags: [], notes: '', type: '-', amount: 0
+      //////////////////不同处////////////////////////
+      tags: [] as Tag[], notes: '', type: '-', amount: 0
     };
 
-    // onUpdateTags(value: string[]) {
-    //   this.record.tags = value;
-    // }
-
-    onUpdateNotes(value: string) {
-      this.record.notes = value;
-    }
-
     saveRecord() {
+      //////////////不同处/////////////////
+      this.record.tags = store.tagList;
       store.createRecord(this.record);
     }
 
