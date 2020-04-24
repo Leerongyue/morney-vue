@@ -23,8 +23,6 @@
   import Icon from '@/components/Icon.vue';
   import FormItem from '@/components/Money/FormItem.vue';
   import Button from '@/components/Button.vue';
-  import tagListModel from '@/models/tagListModel';
-
 
   @Component({
     components: {Button, FormItem, Icon}
@@ -33,32 +31,29 @@
     tag?: { id: string; name: string } = undefined;
 
     created() {
-      const id = this.$route.params.id;
-      const tags = window.tagList;
-      const tag = tags.filter(t => t.id === id)[0];
-      if (tag) {
-        this.tag = tag;
-      } else {
+      this.tag = window.findTag(this.$route.params.id);
+      if (!this.tag) {
         this.$router.replace('/404');
       }
     }
 
     update(name: string) {
       if (this.tag) {
-        tagListModel.update(this.tag.id, name);
+        window.updateTag(this.tag.id, name);
       }
 
     }
 
     remove() {
       if (this.tag) {
-        if (tagListModel.remove(this.tag.id)) {
+        if (window.removeTag(this.tag.id)) {
           this.$router.back();
         } else {
           window.alert('删除失败');
         }
 
       }
+
     }
 
     goBack() {
