@@ -17,13 +17,14 @@
   import {Component} from 'vue-property-decorator';
   import Icon from '@/components/Icon.vue';
   import Button from '@/components/Button.vue';
+  import store from '@/store/index2';
 
 
   @Component({
     components: {Button, Icon}
   })
   export default class Labels extends Vue {
-    tags = window.tagList;
+    tags = store.tagList;
 
     createTag() {
       const name = window.prompt('请输入标签');
@@ -31,7 +32,7 @@
         window.alert('标签名不能为空');
       } else {
         if (name) {
-          window.createTag(name);
+          store.createTag(name);
         }
       }
     }
