@@ -3,7 +3,7 @@
     <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
     <Types :value.sync="record.type"/>
     <div class="notes">
-<!--      ///////////不同处(.sync)//////////////-->
+      <!--      ///////////不同处(.sync)//////////////-->
       <FormItem :value.sync="record.notes" field-name="备注" place-holder="在这里输入备注"/>
     </div>
     <Tags/>
@@ -24,12 +24,12 @@
     recordList = store.recordList;
     record: RecordItem = {
       //////////////////不同处////////////////////////
-      tags: [] as Tag[], notes: '', type: '-', amount: 0
+      tags: [], notes: '', type: '-', amount: 0
     };
 
     saveRecord() {
       //////////////不同处/////////////////
-      this.record.tags = store.tagList;
+      // this.record.tags = store.tagList;
       store.createRecord(this.record);
     }
 
