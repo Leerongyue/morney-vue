@@ -33,13 +33,7 @@
         window.alert('标签名不能为空');
       } else {
         if (name) {
-          const message = tagListModel.create(name);
-          if (message === 'duplicated') {
-            window.alert('标签名重复');
-          } else {
-            // window.alert('添加成功');
-          }
-
+          window.createTag(name);
         }
       }
     }
