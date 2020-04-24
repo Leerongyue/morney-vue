@@ -19,9 +19,18 @@
   import FormItem from '@/components/Money/FormItem.vue';
   import store from '@/store/index2';
 
-  @Component({components: {FormItem, NumberPad, Types, Tags}})
+
+  @Component({
+    components: {FormItem, NumberPad, Types, Tags},
+    computed: {
+      recordList() {
+        return store.recordList;
+      }
+    }
+  })
   export default class Money extends Vue {
-    recordList = store.recordList;
+
+    // recordList = store.recordList;
     record: RecordItem = {
       //////////////////不同处////////////////////////
       tags: [], notes: '', type: '-', amount: 0
