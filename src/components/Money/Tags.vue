@@ -21,14 +21,12 @@
   import TagHelpers from '@/mixins/TagHelpers';
   import {mixins} from 'vue-class-component';
 
-  @Component({
-    computed: {
-      tags() {
-        return this.$store.state.tagList;
-      }
-    }
-  })
+  @Component
   export default class Tags extends mixins(TagHelpers) {
+    get tags() {
+      return this.$store.state.tagList;
+    }
+
     created() {
       this.$store.commit('fetchTag');
     }

@@ -7,7 +7,7 @@
       </router-link>
     </div>
     <div class="newTag-wrapper">
-<!--      createTag在mixins里-->
+      <!--      createTag在mixins里-->
       <Button class="newTag" @click.native="createTag">新建标签</Button>
     </div>
   </Layout>
@@ -23,13 +23,12 @@
 
   @Component({
     components: {Button, Icon},
-    computed: {
-      tags() {
-        return this.$store.state.tagList;
-      }
-    }
   })
   export default class Labels extends mixins(TagHelpers) {
+    get tags() {
+      return this.$store.state.tagList;
+    }
+
     created() {
       this.$store.commit('fetchTag');
     }
