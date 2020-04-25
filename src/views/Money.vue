@@ -18,19 +18,16 @@
   import NumberPad from '@/components/Money/NumberPad.vue';
   import FormItem from '@/components/Money/FormItem.vue';
   import store from '@/store/index2';
+  import Button from '@/components/Button.vue';
 
 
   @Component({
-    components: {FormItem, NumberPad, Types, Tags},
-    computed: {
-      recordList() {
-        return store.recordList;
-      }
-    }
+    components: {Button, FormItem, NumberPad, Types, Tags},
+
   })
   export default class Money extends Vue {
 
-    // recordList = store.recordList;
+    recordList = store.recordList;
     record: RecordItem = {
       //////////////////不同处////////////////////////
       tags: [], notes: '', type: '-', amount: 0
