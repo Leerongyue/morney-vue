@@ -7,6 +7,7 @@
       </router-link>
     </div>
     <div class="newTag-wrapper">
+<!--      createTag在mixins里-->
       <Button class="newTag" @click.native="createTag">新建标签</Button>
     </div>
   </Layout>
@@ -17,24 +18,20 @@
   import {Component} from 'vue-property-decorator';
   import Icon from '@/components/Icon.vue';
   import Button from '@/components/Button.vue';
-  import store from '@/store/index2';
-
+  import {mixins} from 'vue-class-component';
+  import TagHelpers from '@/mixins/TagHelpers';
 
   @Component({
-    components: {Button, Icon}
-  })
-  export default class Labels extends Vue {
-    tags = store.tagList;
-
-    createTag() {
-      const name = window.prompt('请输入标签');
-      if (name === '') {
-        window.alert('标签名不能为空');
-      } else {
-        if (name) {
-          store.createTag(name);
-        }
+    components: {Button, Icon},
+    computed: {
+      tags() {
+        return this.$store.state.tagList;
       }
+    }
+  })
+  export default class Labels extends mixins(TagHelpers) {
+    created() {
+      this.$store.commit('fetchTag');
     }
   }
 </script>
