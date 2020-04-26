@@ -20,9 +20,8 @@
   import {Component} from 'vue-property-decorator';
   import Vue from 'vue';
   import Tabs from '@/components/Tabs.vue';
-  import Types from '@/components/Money/Types.vue';
 
-  @Component({components: {Types, Tabs}})
+  @Component({components: { Tabs}})
   export default class Statistics extends Vue {
     type = '-';
     typeList = [{text: '支出', value: '-'}, {text: '收入', value: '+'}];
