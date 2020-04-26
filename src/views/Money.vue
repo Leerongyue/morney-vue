@@ -18,14 +18,14 @@
   import FormItem from '@/components/Money/FormItem.vue';
   import Button from '@/components/Button.vue';
   import Tabs from '@/components/Tabs.vue';
+  import typeList from '@/constants/typeList';
 
 
   @Component({
     components: {Tabs, Button, FormItem, NumberPad, Tags},
   })
   export default class Money extends Vue {
-    type = '-';
-    typeList = [{text: '支出', value: '-'}, {text: '收入', value: '+'}];
+    typeList = typeList;
 
     get recordList() {
       return this.$store.state.recordList;
