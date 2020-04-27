@@ -1,17 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import clone from '@/lib/clone';
-import getNowDate from '@/lib/date';
 import createID from '@/lib/createID';
 import router from '@/router';
 
 Vue.use(Vuex);
 
-type RootState = {
-  recordList: RecordItem[];
-  tagList: Tag[];
-  currentTag?: Tag;
-}
+
 const store = new Vuex.Store({
   state: {
     recordList: [],
@@ -27,7 +22,7 @@ const store = new Vuex.Store({
     },
     createRecord(state, record: RecordItem) {
       const record2: RecordItem = clone(record);
-      record2.createAt = getNowDate();
+      record2.createAt = new Date().toISOString();
       state.recordList.push(record2); // 最新可选链语法，等价于this.recordList && this.recordList.push(record2);
       store.commit('saveRecord');
     },
