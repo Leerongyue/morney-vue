@@ -44,7 +44,7 @@
     inputContent(event: MouseEvent) {
 
       const button = (event.target as HTMLButtonElement);
-      const input = button.textContent!;
+      const input = button.textContent;
       // if (this.state !== 0) {
       //   this.a += input;
       //   this.output = this.a;
@@ -71,7 +71,7 @@
       if (this.output.length === 1) {
         this.output = '0';
       } else {
-        this.output = this.output!.slice(0, -1);
+        this.output = this.output.slice(0, -1);
 
       }
     }
@@ -82,8 +82,9 @@
     }
 
     ok() {
-      this.$emit('update:value', this.output);
-      this.$emit('submit', this.output);
+      const number = parseFloat(this.output);
+      this.$emit('update:value', number);
+      this.$emit('submit', number);
       this.output = '0';
     }
 
