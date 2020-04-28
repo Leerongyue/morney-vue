@@ -4,9 +4,9 @@
           :data-source="typeList"
           :value.sync="type"
     />
-    <ol>
+    <ol v-if="groupList.length>0">
       <li v-for="(group,index)  in groupList" :key="index">
-        <h3 class="title">{{beautify(group.title)}} <span>{{group.total}}</span></h3>
+        <h3 class="title">{{beautify(group.title)}} <span>￥{{group.total}}</span></h3>
         <ol>
           <li v-for="item in group.items" :key="item.id" class="record">
             <span>{{tagString(item.tags)}}</span>
@@ -16,6 +16,11 @@
         </ol>
       </li>
     </ol>
+    <div v-else class="noList">
+      <a><img src="https://i.loli.net/2020/04/28/jKdivx9BH6oWLlb.png" ></a>
+      <div>空空如也</div>
+    </div>
+
   </Layout>
 </template>
 
@@ -41,9 +46,9 @@
 
     get groupList() {
       const {recordList} = this;
-      if (recordList.length === 0) {return []; }
       const newList = clone(recordList).filter(r => r.type === this.type).sort((a, b) => dayjs(b.createAt).valueOf() - dayjs(a.createAt).valueOf()
       );
+      if (newList.length === 0) {return []; }
       type Result = { title: string; total?: number; items: RecordItem[] }[]
       const result: Result = [{
         title: dayjs(newList[0].createAt).format('YYYY-MM-DD'), items: [newList[0]]
@@ -90,6 +95,13 @@
 </script>
 
 <style lang="scss" scoped>
+  .noList {
+    /*border: 1px solid red;*/
+    text-align: center;
+    margin-top: 200px;
+    background: rgba(229,229,229);
+  }
+
   ::v-deep .type-tabs-item {
     background: white;
     /*border: 1px solid red;*/

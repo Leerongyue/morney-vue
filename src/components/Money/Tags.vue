@@ -1,8 +1,8 @@
 <template>
   <div class="tags">
     <!--      createTag在mixins里-->
-    <div class="new" @click="createTag">
-      <button>
+    <div class="new">
+      <button @click="createTag">
         新增标签
       </button>
     </div>
@@ -16,13 +16,13 @@
 </template>
 
 <script lang="ts">
-  import Vue from 'vue';
-  import {Component, Prop} from 'vue-property-decorator';
+  import {Component} from 'vue-property-decorator';
   import TagHelpers from '@/mixins/TagHelpers';
   import {mixins} from 'vue-class-component';
 
   @Component
   export default class Tags extends mixins(TagHelpers) {
+
     get tags() {
       return this.$store.state.tagList;
     }
@@ -38,8 +38,13 @@
       if (index >= 0) {
         this.selectedTags.splice(index, 1);
       } else {
-        this.selectedTags.push(tag);
+        if (this.selectedTags.length >= 1) {
+          return;
+        } else {
+          this.selectedTags.push(tag);
+        }
       }
+      this.$emit('update:value', this.selectedTags);
     }
 
 
@@ -84,7 +89,6 @@
     }
 
     > .new {
-      /*border: 1px solid red;*/
       padding-top: 16px;
 
       > button {

@@ -54,8 +54,8 @@
       if (this.output.length === 16) {return;}
       if (this.output.indexOf('.') >= 0 && input === '.') {return;}
       if (this.output === '0') {
-        if ('0123456789'.indexOf(input) >= 0) {
-          this.output = input;
+        if ('0123456789'.indexOf(input!) >= 0) {
+          this.output = input!;
         } else {
           this.output += input;
         }

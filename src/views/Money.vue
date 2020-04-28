@@ -6,13 +6,13 @@
       <!--      ///////////不同处(.sync)//////////////-->
       <FormItem :value.sync="record.notes" field-name="备注" place-holder="在这里输入备注"/>
     </div>
-    <Tags/>
+    <Tags :value.sync="record.tags"/>
   </Layout>
 </template>
 
 <script lang="ts">
   import Vue from 'vue';
-  import {Component, Watch} from 'vue-property-decorator';
+  import {Component} from 'vue-property-decorator';
   import Tags from '@/components/Money/Tags.vue';
   import NumberPad from '@/components/Money/NumberPad.vue';
   import FormItem from '@/components/Money/FormItem.vue';
@@ -42,10 +42,13 @@
     };
 
     saveRecord() {
+      if (!this.record.tags.length || this.record.tags.length === 0) {
+        return window.alert('请至少选择一个标签');
+      }
+      this.record.notes = ''
       this.$store.commit('createRecord', this.record);
-      // store.createRecord(this.record);
+      // store.createRecord(this.record)；
     }
-
   }
 </script>
 <style lang="scss">
