@@ -45,8 +45,8 @@
       if (!this.record.tags.length || this.record.tags.length === 0) {
         return window.alert('请至少选择一个标签');
       }
-      this.record.notes = ''
       this.$store.commit('createRecord', this.record);
+      this.record.notes = '';
       // store.createRecord(this.record)；
     }
   }

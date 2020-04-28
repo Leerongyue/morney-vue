@@ -28,10 +28,15 @@ const store = new Vuex.Store({
     },
     saveRecord(state) {
       window.localStorage.setItem('recordList', JSON.stringify(state.recordList));
-      window.alert('保存成功')
+      window.alert('保存成功');
     },
     fetchTag(state) {
       state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]');
+      // if (!state.tagList || state.tagList.length === 0) {}
+      // store.commit('createTag', '衣');
+      // store.commit('createTag', '食');
+      // store.commit('createTag', '住');
+      // store.commit('createTag', '行');
     },
     createTag(state, name: string) {
       const names = state.tagList.map(t => t.name);
