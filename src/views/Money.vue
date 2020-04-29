@@ -47,7 +47,6 @@
       }
       this.$store.commit('createRecord', this.record);
       this.record.notes = '';
-      // store.createRecord(this.record)；
     }
   }
 </script>

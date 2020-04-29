@@ -9,6 +9,7 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
+    createTagError: null,
     recordList: [],
     tagList: [],
     currentTag: undefined
@@ -31,22 +32,22 @@ const store = new Vuex.Store({
       window.alert('保存成功');
     },
     fetchTag(state) {
+      if (!state.tagList || state.tagList.length === 0) {
+        store.commit('createTag', '衣');
+        store.commit('createTag', '食');
+        store.commit('createTag', '住');
+        store.commit('createTag', '行');
+      }
       state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]');
-      // if (!state.tagList || state.tagList.length === 0) {}
-      // store.commit('createTag', '衣');
-      // store.commit('createTag', '食');
-      // store.commit('createTag', '住');
-      // store.commit('createTag', '行');
     },
     createTag(state, name: string) {
       const names = state.tagList.map(t => t.name);
       if (names.indexOf(name) >= 0) {
-        window.alert('标签名重复');
+        window.alert('标签名重复')
       } else {
         const id = createID().toString();
         state.tagList.push({id: id, name: name});
         store.commit('saveTag');
-        window.alert('添加成功');
       }
     },
     saveTag(state) {

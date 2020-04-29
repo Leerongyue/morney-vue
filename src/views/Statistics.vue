@@ -17,7 +17,7 @@
       </li>
     </ol>
     <div v-else class="noList">
-      <a><img src="https://i.loli.net/2020/04/28/jKdivx9BH6oWLlb.png" ></a>
+      <a><img src="https://i.loli.net/2020/04/28/jKdivx9BH6oWLlb.png"></a>
       <div>空空如也</div>
     </div>
 
@@ -32,9 +32,11 @@
   import typeList from '@/constants/typeList';
   import dayjs from 'dayjs';
   import clone from '@/lib/clone';
+  import Button from '@/components/Button.vue';
 
-  @Component({components: {Tabs}})
+  @Component({components: {Button, Tabs}})
   export default class Statistics extends Vue {
+
     tagString(tags: Tag[]) {
       return tags.length === 0 ? '无' : tags.join(',');
     }
@@ -95,11 +97,25 @@
 </script>
 
 <style lang="scss" scoped>
+  /*.removeWrapper {*/
+  /*  text-align: center;*/
+  /*  margin-top: 80px;*/
+
+  /*  .remove {*/
+  /*    !*border:1px solid red;*!*/
+  /*    border: none;*/
+  /*    padding: 8px 16px;*/
+  /*    background: rgba(118, 118, 118);*/
+  /*    border-radius: 4px;*/
+  /*    color: white;*/
+  /*  }*/
+  /*}*/
+
   .noList {
     /*border: 1px solid red;*/
     text-align: center;
     margin-top: 200px;
-    background: rgba(229,229,229);
+    background: rgba(229, 229, 229);
   }
 
   ::v-deep .type-tabs-item {
