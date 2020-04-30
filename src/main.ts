@@ -22,7 +22,7 @@ window.onload = function () {setTimeout(function () {window.scrollTo(0, 1000);},
 if (document.documentElement.clientWidth > 500) {
   window.alert('请扫描二维码，使用手机打开');
   const img = document.createElement('img');
-  img.src = '/qrcode.png';
+  img.src = './qrcode.png';
   img.style.position = 'fixed';
   img.style.left = '50%';
   img.style.top = '50%';
