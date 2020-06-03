@@ -16,10 +16,10 @@
         </ol>
       </li>
     </ol>
-    <div v-else class="noList">
-      <a><img src="https://i.loli.net/2020/04/28/jKdivx9BH6oWLlb.png"></a>
-      <div>空空如也</div>
-    </div>
+<!--    <div v-else class="noList">-->
+<!--      <a><img src="https://i.loli.net/2020/04/28/jKdivx9BH6oWLlb.png"></a>-->
+<!--      <div>空空如也</div>-->
+<!--    </div>-->
 
   </Layout>
 </template>

@@ -10,6 +10,7 @@
       <!--      createTag在mixins里-->
       <Button class="newTag" @click.native="createTag">新建标签</Button>
     </div>
+    <div class="pos"></div>
   </Layout>
 </template>
 
@@ -39,6 +40,11 @@
   @import "~@/assets/style/helper.scss";
   @import "~@/assets/style/reset.scss";
 
+
+  .pos{
+    flex-grow: 1;
+    background: #000;
+  }
   .tags {
     /*border: 1px solid red;*/
     background: white;

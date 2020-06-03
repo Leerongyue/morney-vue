@@ -15,8 +15,7 @@
     font-family: $font-hei;
     font-size: 16px;
     line-height: 1.5;
-    background: #E5E5E5;
-  }
+    background: #E5E5E5;}
 </style>
 <script>
   export default {
